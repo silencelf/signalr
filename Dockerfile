@@ -1,4 +1,4 @@
 FROM    mcr.microsoft.com/dotnet/sdk:5.0
-WORKDIR .
-COPY    . .
-CMD     ["dotnet", "run"]
+COPY    bin/Release/net5.0/ app/ 
+WORKDIR app/
+ENTRYPOINT ["dotnet", "signalr.dll", "--urls=http://0.0.0.0:5000"]
