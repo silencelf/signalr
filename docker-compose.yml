@@ -11,3 +11,6 @@ services:
     image: "nginx_web:latest"
     ports:
       - 80:80
+    depends_on:
+      - "dotnet_web1"
+      - "dotnet_web2"
