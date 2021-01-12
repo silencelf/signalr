@@ -3,10 +3,14 @@ services:
     image: "dotnet_web:latest"
     ports:
       - 5000:5000
+    environment:
+      - appName=web1
   dotnet_web2:
     image: "dotnet_web:latest"
     ports:
       - 5001:5000
+    environment:
+      - appName=web2
   nginx_web:
     image: "nginx_web:latest"
     ports:
