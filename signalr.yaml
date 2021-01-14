@@ -1,18 +1,28 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: configmap-pod
+  name: nginx-deployment
+  labels:
+    app: nginx
 spec:
-  containers:
-    - name: test
-      image: busybox
-      volumeMounts:
-        - name: config-vol
-          mountPath: /etc/config
-  volumes:
-    - name: config-vol
-      configMap:
-        name: log-config
-        items:
-          - key: log_level
-            path: log_level
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
