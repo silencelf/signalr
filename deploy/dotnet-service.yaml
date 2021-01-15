@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-service
+spec:
+  selector:
+    app: dotnet-web
+  ports:
+  - port: 5000
+    targetPort: 5000
