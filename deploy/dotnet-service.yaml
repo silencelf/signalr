@@ -6,8 +6,6 @@ metadata:
 spec:
   selector:
     app: dotnet-web
-  type: LoadBalancer
   ports:
   - port: 5000
     targetPort: 5000
-    nodePort: 30000
